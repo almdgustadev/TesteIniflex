@@ -75,13 +75,18 @@ public class Main {
     }
 
     public void exibirFuncionariosAgrupados(Map<String, List<Funcionario>> funcionariosPorFuncao) {
-        for (Map.Entry<String, List<Funcionario>> entry : funcionariosPorFuncao.entrySet()) {
-            System.out.println("Função: " + entry.getKey() + "\n");
-            for (Funcionario funcionario : entry.getValue()) {
-                System.out.println(funcionario);
-                System.out.println();
+        if(!funcionarioList.isEmpty()){
+            for (Map.Entry<String, List<Funcionario>> entry : funcionariosPorFuncao.entrySet()) {
+                System.out.println("Função: " + entry.getKey() + "\n");
+                for (Funcionario funcionario : entry.getValue()) {
+                    System.out.println(funcionario);
+                    System.out.println();
+                }
             }
+        }else {
+            System.out.println("A lista está vazia!");
         }
+
     }
 
     public void exibirFuncionarioMes10e12(){
@@ -137,6 +142,8 @@ public class Main {
             for (Funcionario funcionario :  funcionarioList){
                 total = total.add(funcionario.getSalario());
             }
+        }else {
+            System.out.println("A lista está vazia!");
         }
         NumberFormat formatadorNumero =  NumberFormat.getNumberInstance(new Locale("pt", "BR"));
         formatadorNumero.setMaximumFractionDigits(2);
@@ -174,7 +181,7 @@ public class Main {
         gerente.adicionarFuncionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente");
         gerente.exibirFuncionario();
 
-        System.out.println("------------------------------------");
+        System.out.println("------------------Removendo João ------------------");
 
         gerente.removerFuncionario("João");
 
