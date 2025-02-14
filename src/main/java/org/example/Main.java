@@ -57,6 +57,8 @@ public class Main {
 
                 funcionario.setSalario(novoSalario);
             }
+        }else {
+            System.out.println("A lista está vazia!");
         }
     }
 
@@ -91,20 +93,24 @@ public class Main {
                     System.out.println();
                 }
             }
+        }else {
+            System.out.println("A lista está vazia!");
         }
     }
 
     public void FuncionarioMaisVelho(List<Funcionario> funcionarioList) {
-        if (funcionarioList.isEmpty()) {
+        if (!funcionarioList.isEmpty()) {
+            LocalDate dataAtual = LocalDate.now();
+            Funcionario funcionarioMaisVelho = Collections.max(funcionarioList, Comparator.comparingInt(f -> Period.between(f.getDataNascimento(), dataAtual).getYears()));
+            int idade = Period.between(funcionarioMaisVelho.getDataNascimento(), dataAtual).getYears();
+
+            System.out.println(funcionarioMaisVelho.getNome());
+            System.out.println("Idade: " + idade);
+        }else {
             System.out.println("A lista está vazia!");
         }
 
-        LocalDate dataAtual = LocalDate.now();
-        Funcionario funcionarioMaisVelho = Collections.max(funcionarioList, Comparator.comparingInt(f -> Period.between(f.getDataNascimento(), dataAtual).getYears()));
-        int idade = Period.between(funcionarioMaisVelho.getDataNascimento(), dataAtual).getYears();
 
-        System.out.println(funcionarioMaisVelho.getNome());
-        System.out.println("Idade: " + idade);
     }
 
     public void exibirFuncionarioPorNome(List<Funcionario> funcionarioList){
@@ -148,6 +154,8 @@ public class Main {
 
                 System.out.println(funcionario.getNome() + "\nQuantidade de salários minímos: " + quantidadeDeSalarios + "\n");
             }
+        }else {
+            System.out.println("A lista está vazia!");
         }
     }
 
