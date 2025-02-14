@@ -1,7 +1,6 @@
 package org.example;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.Period;
